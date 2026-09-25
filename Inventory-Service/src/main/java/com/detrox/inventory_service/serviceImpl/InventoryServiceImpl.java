@@ -18,7 +18,7 @@ public class InventoryServiceImpl implements InventoryService {
     @Override
     @Transactional(readOnly = true)
     public List<InventoryResponse> isInStock(List<String> skuCode) {
-        return inventoryRepository.findBySkuCodeIn()
+        return inventoryRepository.findBySkuCodeIn(skuCode)
                 .stream()
                 .map(inventory ->
                     InventoryResponse.builder().
